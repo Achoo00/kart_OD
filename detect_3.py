@@ -180,7 +180,7 @@ def run(
                         c = int(cls)  # integer class
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         annotator.box_label(xyxy, label, color=colors(c, True))
-                        if "person" in label: # Change depending on classes in .yaml file
+                        if "Mario" in label: # Change depending on classes in .yaml file
                             coord_1_grey = xyxy
                             coord_stripped_grey = [] # Clears array so that it doesn't get too long when printing
                             for i in coord_1_grey:
@@ -189,7 +189,7 @@ def run(
                                 coord_stripped_grey.append(coord_2_grey)
                             labels_grey.append(label)
                             coords_grey = coord_stripped_grey
-                        elif "car" in label:
+                        elif "And Kart" in label:
                             coord_1_red = xyxy
                             coord_stripped_red = []
                             for i in coord_1_red:
@@ -207,9 +207,9 @@ def run(
                                 difference.append(diff)
                                 print("Difference:", difference[-1])
                                 if difference[-1] < 0:
-                                    print("Orange is above")
+                                    print("Mario is ahead")
                                 elif difference[-1] > 0:
-                                    print("Apple is above")
+                                    print("And Kart is ahead")
                                 elif difference[-1] == 0:
                                     print("Tied")
                                 else:
@@ -218,9 +218,9 @@ def run(
                                 print("Not enough data")
                         except TypeError:
                             print("Not enough data")
-                        print("Orange coordinates:", coords_grey) # Will print only current coords of grey
+                        print("Mario Coordinates:", coords_grey) # Will print only current coords of grey
                         #print("Grey labels:", labels_grey) # Will print every label
-                        print("Apple coordinates:", coords_red) # Will print only current coords of red
+                        print("And Kart Coordinates:", coords_red) # Will print only current coords of red
                         #print("Red labels:", labels_red) # Will print every label
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
