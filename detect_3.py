@@ -198,7 +198,7 @@ def run(
                             labels_red.append(label)
                             coords_red = coord_stripped_red
                         else:
-                            print("object not detected")
+                            print(f"object not detected\n")
                         try:
                             if len(coords_red) > 0 and len(coords_grey) > 0: # Check if red or grey array has any elements
                                 diff = numpy.subtract(int(coords_grey[-1]),
@@ -213,14 +213,14 @@ def run(
                                 elif difference[-1] == 0:
                                     print("Tied")
                                 else:
-                                    print("Imaginary numbers")
+                                    print(f"Imaginary numbers\n")
                             else:
-                                print("Not enough data")
+                                print(f"Not enough data\n")
                         except TypeError:
-                            print("Not enough data")
+                            print(f"Not enough data\n")
                         print("Mario Coordinates:", coords_grey) # Will print only current coords of grey
                         #print("Grey labels:", labels_grey) # Will print every label
-                        print("And Kart Coordinates:", coords_red) # Will print only current coords of red
+                        print(f"And Kart Coordinates:", coords_red,"\n") # Will print only current coords of red
                         #print("Red labels:", labels_red) # Will print every label
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
