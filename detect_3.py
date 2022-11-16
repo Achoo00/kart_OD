@@ -180,13 +180,15 @@ def run(
                         c = int(cls)  # integer class
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         annotator.box_label(xyxy, label, color=colors(c, True))
+                        print("--------------------------------------------")
                         if "Mario" in label: # Change depending on classes in .yaml file
                             coord_1_grey = xyxy
                             coord_stripped_grey = [] # Clears array so that it doesn't get too long when printing
                             for i in coord_1_grey:
                                 coord_2_grey = re.sub('\D', '', str(i)) # Filters out everything in string that isn't
                                 # a digit
-                                coord_stripped_grey.append(coord_2_grey)
+                                coord_3_grey=np.divide(coord_2_grey,10)
+                                coord_stripped_grey.append(coord_3_grey)
                             labels_grey.append(label)
                             coords_grey = coord_stripped_grey
                         elif "And Kart" in label:
@@ -194,7 +196,8 @@ def run(
                             coord_stripped_red = []
                             for i in coord_1_red:
                                 coord_2_red = re.sub('\D', '', str(i))
-                                coord_stripped_red.append(coord_2_red)
+                                coord_3_red=np.divide(coord_2_red,10)
+                                coord_stripped_red.append(coord_3_red)
                             labels_red.append(label)
                             coords_red = coord_stripped_red
                         else:
@@ -215,13 +218,14 @@ def run(
                                 else:
                                     print(f"Imaginary numbers\n")
                             else:
-                                print(f"Not enough data\n")
+                                print(f"Difference: Not enough data\n")
                         except TypeError:
-                            print(f"Not enough data\n")
+                            print(f"Difference: TypeError Not enough data\n")
                         print("Mario Coordinates:", coords_grey) # Will print only current coords of grey
                         #print("Grey labels:", labels_grey) # Will print every label
-                        print(f"And Kart Coordinates:", coords_red,"\n") # Will print only current coords of red
+                        print("And Kart Coordinates:", coords_red) # Will print only current coords of red
                         #print("Red labels:", labels_red) # Will print every label
+                        print("--------------------------------------------")
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 
