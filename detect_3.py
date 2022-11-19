@@ -201,7 +201,7 @@ def run(
                             labels_red.append(label)
                             coords_red = coord_stripped_red
                         else:
-                            print(f"object not detected\n")
+                            print(f"Object not detected\n")
                         try:
                             if len(coords_red) > 0 and len(coords_grey) > 0: # Check if red or grey array has any elements
                                 diff = numpy.subtract(int(coords_grey[-1]),
