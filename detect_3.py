@@ -31,7 +31,7 @@ from pathlib import Path
 
 import torch
 import re
-import numpy
+#import numpy
 
 coords_grey = []
 coords_red = []
@@ -187,8 +187,8 @@ def run(
                             for i in coord_1_grey:
                                 coord_2_grey = re.sub('\D', '', str(i)) # Filters out everything in string that isn't
                                 # a digit
-                                coord_3_grey=np.divide(coord_2_grey,10)
-                                coord_stripped_grey.append(coord_3_grey)
+                                #coord_3_grey=np.divide(coord_2_grey,10)
+                                coord_stripped_grey.append(coord_2_grey)
                             labels_grey.append(label)
                             coords_grey = coord_stripped_grey
                         elif "And Kart" in label:
@@ -196,8 +196,8 @@ def run(
                             coord_stripped_red = []
                             for i in coord_1_red:
                                 coord_2_red = re.sub('\D', '', str(i))
-                                coord_3_red=np.divide(coord_2_red,10)
-                                coord_stripped_red.append(coord_3_red)
+                                #coord_3_red=np.divide(coord_2_red,10)
+                                coord_stripped_red.append(coord_2_red)
                             labels_red.append(label)
                             coords_red = coord_stripped_red
                         else:
