@@ -31,7 +31,7 @@ from pathlib import Path
 
 import torch
 import re
-#import numpy
+import numpy
 
 coords_grey = []
 coords_red = []
