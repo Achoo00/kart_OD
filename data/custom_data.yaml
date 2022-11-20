@@ -1,5 +1,5 @@
-train: ../dataset/images/train/  # train images (relative to 'path') 128 images
-val: ../dataset/images/val/  # val images (relative to 'path') 128 images
+train: ../kart_bulk_images/dataset/images/train/  # train images (relative to 'path')
+val: ../kart_bulk_images/dataset/images/val/  # val images (relative to 'path')
 
 nc: 2
 
